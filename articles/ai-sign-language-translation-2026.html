@@ -231,6 +231,27 @@
 
             <p><strong>Accuracy Cost:</strong> The cost of AI's 5-15% error rate versus human interpretation's 1-2% error rate must be weighed against the accessibility gain. In low-stakes contexts (social conversation, routine workplace chat, lecture attendance), the occasional mistranslation is a minor inconvenience far outweighed by having any access at all. In high-stakes contexts (legal, medical, termination meetings), the error-rate cost is potentially catastrophic, justifying human interpretation expense. Organizations that intelligently tier interpretation—AI for routine, human for high-stakes—optimize both cost and risk.</p>
 
+            <h2>Technical Challenges in AI Sign Language Translation</h2>
+
+            <h3>The Grammar Problem</h3>
+            <p>Sign languages have fundamentally different grammar from spoken languages. ASL uses topic-comment structure (stating the topic first, then commenting on it), non-manual markers (facial expressions and body movements that carry grammatical meaning), and spatial grammar (using physical space to establish referents and relationships). AI systems that simply translate sign-to-English word-by-word produce unnatural, often incomprehensible output. The most advanced systems use NMT (Neural Machine Translation) approaches that learn ASL grammar patterns from large datasets of annotated sign language video — but dataset sizes remain small compared to text-based translation training data.</p>
+
+            <h3>Regional Variation and Dialects</h3>
+            <p>Just as spoken English varies between the US, UK, and Australia, ASL varies significantly by region, age, ethnicity, and education background. A sign used in New York may not be recognized in California. Black ASL (BASL) has distinct vocabulary and grammatical features from mainstream ASL. AI systems trained on limited, non-diverse datasets often fail for signers from underrepresented communities — a significant equity concern given that sign language AI should serve all deaf individuals, not just those whose signing matches training data. Leading platforms are actively expanding dataset diversity through community partnership programs.</p>
+
+            <h3>Real-Time Processing Constraints</h3>
+            <p>Conversation-speed sign language translation requires processing 30fps video, extracting hand shape/position/movement features, recognizing facial expressions and body posture, segmenting continuous signing into linguistic units, and generating target language output — all with under 500ms latency for real-time conversation. This computational challenge requires either powerful local hardware (limiting mobile deployment) or cloud processing (requiring internet connectivity and adding network latency). Edge AI chips in newer smartphones are beginning to enable on-device processing, but full continuous sign language translation on mobile devices remains a 2-3 year horizon.</p>
+
+            <h2>AI Sign Language in Healthcare Settings</h2>
+
+            <p>Healthcare communication is one of the highest-stakes applications for sign language AI. Deaf patients face significant healthcare disparities: 50% higher rates of preventable adverse events, 40% lower health literacy scores, and documented cases of misdiagnosis due to communication barriers. AI translation tools are being deployed in healthcare settings to bridge these gaps:</p>
+
+            <ul>
+                <li><strong>Emergency departments:</strong> SignAll and MotionSavvy are being piloted in hospital EDs where professional interpreters may not be available at 2 AM. The AI provides immediate basic communication capability — enough for triage and initial assessment — while a human interpreter is contacted for complex medical discussions.</li>
+                <li><strong>Telehealth:</strong> AI sign language translation integrated into telehealth platforms (Zoom, Doxy.me) enables deaf patients to access medical consultations without requiring a separate interpreter. The AI translates the patient's signs to text/speech for the clinician and displays the clinician's speech as text or avatar signs for the patient.</li>
+                <li><strong>Mental health:</strong> Access to mental health services is particularly limited for deaf individuals — only 2% of mental health professionals can sign. AI translation enables more deaf patients to access therapy, though the nuanced emotional content of therapy sessions still benefits from human interpreter involvement.</li>
+            </ul>
+
             <h2>Real-World Case Studies</h2>
 
             <h3>Case Study 1: Michigan State University's AI Implementation</h3>
