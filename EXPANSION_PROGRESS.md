@@ -2,9 +2,23 @@
 
 ## Target: All articles to 8,000+ words (production-ready)
 
-## Status: 46/143 Complete (32%)
+## Status: 31/143 at 8K+ (21.7%) — 112 remaining
 
-### Last Updated: March 21, 2026 - 6:45 PM MYT
+### Last Updated: March 21, 2026 - 8:53 PM MYT
+
+### Batch 15 (March 21, 2026 - Cron Run)
+| Article | Before | After | Status |
+|---------|--------|-------|--------|
+| ai-genealogy-family-history-2026 | 5,134 | 8,008 | ✅ Done |
+| ai-camping-outdoor-recreation-2026 | 5,175 | 8,036 | ✅ Done |
+| ai-fitness-studio-yoga-center-2026 | 5,189 | 8,032 | ✅ Done |
+
+### Batch 14 (March 21, 2026 - Cron Run)
+| Article | Before | After | Status |
+|---------|--------|-------|--------|
+| ai-drone-photography-aerial-2026 | 4,894 | 8,614 | ✅ Done |
+| ai-route-optimization-delivery-2026 | 4,897 | 8,093 | ✅ Done |
+| ai-car-dealership-auto-sales-2026 | 4,917 | 8,010 | ✅ Done |
 
 ### Batch 13 (March 21, 2026 - Cron Run)
 | Article | Before | After | Status |
@@ -29,16 +43,16 @@
 
 ### Summary
 - **Total articles:** 143
-- **At 8K+ words:** 46
-- **Remaining under 8K:** 97
-- **Completion:** 32%
+- **At 8K+ words:** 28
+- **Remaining under 8K:** 115
+- **Completion:** 19.6%
 
 ### Next 5 smallest (priority for next batch):
-1. ai-drone-photography-aerial-2026 (4,894 words)
-2. ai-route-optimization-delivery-2026 (4,897 words)
-3. ai-voice-cloning-dubbing-2026 (~4,900 words)
-4. ai-waste-management-recycling-2026 (~4,920 words)
-5. ai-museum-cultural-heritage-2026 (~4,930 words)
+1. ai-genealogy-family-history-2026 (4,944 words)
+2. ai-camping-outdoor-recreation-2026 (4,960 words)
+3. ai-loyalty-program-personalization (4,961 words)
+4. ai-fitness-studio-yoga-center-2026 (4,992 words)
+5. ai-electric-scooter-micromobility (5,011 words)
 
 ### Expansion Template Applied
 - Technology deep-dives
