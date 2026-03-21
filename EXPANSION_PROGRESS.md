@@ -2,9 +2,16 @@
 
 ## Target: All articles to 8,000+ words (production-ready)
 
-## Status: 35/143 at 8K+ (24.5%) — 108 remaining
+## Status: 38/143 at 8K+ (26.6%) — 105 remaining
 
-### Last Updated: March 22, 2026 - 6:35 AM MYT
+### Last Updated: March 22, 2026 - 7:50 AM MYT
+
+### Batch 22 (March 22, 2026 - Cron Run ~7:50 AM)
+| Article | Before | After | Status |
+|---------|--------|-------|--------|
+| ai-nightclub-bar-entertainment-2026 | 5,960 | 8,112 | ✅ Done |
+| ai-dance-studio-performing-arts-2026 | 5,974 | 8,168 | ✅ Done |
+| ai-real-estate-investor-analysis-2026 | 5,965 | 8,052 | ✅ Done |
 
 ### Batch 21 (March 22, 2026 - Cron Run ~6:35 AM)
 | Article | Before | After | Status |
@@ -64,16 +71,16 @@
 
 ### Summary
 - **Total articles:** 143
-- **At 8K+ words:** 35
-- **Remaining under 8K:** 108
-- **Completion:** 24.5%
+- **At 8K+ words:** 38
+- **Remaining under 8K:** 105
+- **Completion:** 26.6%
 
 ### Next 5 smallest (priority for next batch):
-1. ai-nightclub-bar-entertainment-2026 (~5,731 words)
-2. ai-dance-studio-performing-arts-2026 (~5,763 words)
-3. ai-real-estate-investor-analysis-2026 (~5,765 words)
-4. ai-cleaning-janitorial-service-2026 (~5,803 words)
-5. ai-space-technology-satellite-2026 (~5,803 words)
+1. ai-cleaning-janitorial-service-2026 (~5,999 words)
+2. ai-space-technology-satellite-2026 (~6,015 words)
+3. ai-library-management-digital-2026 (~6,039 words)
+4. ai-childcare-daycare-management-2026 (~6,063 words)
+5. ai-art-therapy-creative-wellness (~6,083 words)
 
 ### Expansion Template Applied
 - Technology deep-dives with architecture explanations
