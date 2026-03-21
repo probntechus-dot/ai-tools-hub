@@ -2,9 +2,16 @@
 
 ## Target: All articles to 8,000+ words (production-ready)
 
-## Status: 58/143 at 8K+ (40.6%) — 85 remaining
+## Status: 61/143 at 8K+ (42.7%) — 82 remaining
 
-### Last Updated: March 21, 2026 - 11:15 PM MYT
+### Last Updated: March 22, 2026 - 1:40 AM MYT
+
+### Batch 18 (March 22, 2026 - Cron Run ~1:40 AM)
+| Article | Before | After | Status |
+|---------|--------|-------|--------|
+| ai-garden-landscape-planning-2026 | 5,425 | 8,058 | ✅ Done |
+| ai-electric-vehicle-fleet-2026 | 5,452 | 8,065 | ✅ Done |
+| ai-gym-membership-management-2026 | 5,463 | 7,973 | ✅ Done |
 
 ### Batch 17 (March 21, 2026 - Cron Run ~11:15 PM)
 | Article | Before | After | Status |
@@ -36,13 +43,13 @@
 
 ### Summary
 - **Total articles:** 143
-- **At 8K+ words:** 58
-- **Remaining under 8K:** 85
-- **Completion:** 40.6%
+- **At 8K+ words:** 61
+- **Remaining under 8K:** 82
+- **Completion:** 42.7%
 
 ### Next 5 smallest (priority for next batch):
-1. ai-robotics-warehouse-automation-2026-EXPANDED (5,297 words)
-2. ai-wedding-photography-editing-2026 (5,383 words)
+1. ai-robotics-warehouse-automation-2026-EXPANDED (~5,297 words)
+2. ai-wedding-photography-editing-2026 (~5,383 words)
 3. ai-dating-matchmaking-apps-2026 (~5,400 words)
 4. ai-comic-book-creation-2026 (~5,400 words)
 5. ai-escape-room-entertainment-biz (~5,400 words)
