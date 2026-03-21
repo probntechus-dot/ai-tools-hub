@@ -2,9 +2,16 @@
 
 ## Target: All articles to 8,000+ words (production-ready)
 
-## Status: 55/143 at 8K+ (38.5%) — 88 remaining
+## Status: 58/143 at 8K+ (40.6%) — 85 remaining
 
-### Last Updated: March 21, 2026 - 10:15 PM MYT
+### Last Updated: March 21, 2026 - 11:15 PM MYT
+
+### Batch 17 (March 21, 2026 - Cron Run ~11:15 PM)
+| Article | Before | After | Status |
+|---------|--------|-------|--------|
+| ai-board-game-design-tools-2026 | 5,270 | 8,076 | ✅ Done |
+| ai-augmented-reality-ar-tools-2026 | 5,283 | 8,001 | ✅ Done |
+| ai-drone-delivery-commercial-2026 | 5,301 | 8,020 | ✅ Done |
 
 ### Batch 16 (March 21, 2026 - Cron Run ~10:05 PM)
 | Article | Before | After | Status |
@@ -29,16 +36,16 @@
 
 ### Summary
 - **Total articles:** 143
-- **At 8K+ words:** 55
-- **Remaining under 8K:** 88
-- **Completion:** 38.5%
+- **At 8K+ words:** 58
+- **Remaining under 8K:** 85
+- **Completion:** 40.6%
 
 ### Next 5 smallest (priority for next batch):
-1. ai-board-game-design-tools-2026 (5,270 words)
-2. ai-augmented-reality-ar-tools-2026 (5,283 words)
-3. ai-robotics-warehouse-automation-2026-EXPANDED (5,297 words)
-4. ai-drone-delivery-commercial-2026 (5,301 words)
-5. ai-wedding-photography-editing-2026 (5,383 words)
+1. ai-robotics-warehouse-automation-2026-EXPANDED (5,297 words)
+2. ai-wedding-photography-editing-2026 (5,383 words)
+3. ai-dating-matchmaking-apps-2026 (~5,400 words)
+4. ai-comic-book-creation-2026 (~5,400 words)
+5. ai-escape-room-entertainment-biz (~5,400 words)
 
 ### Expansion Template Applied
 - Technology deep-dives with architecture explanations
