@@ -2,9 +2,16 @@
 
 ## Target: All articles to 8,000+ words (production-ready)
 
-## Status: 63/143 at 8K+ (44.1%) — 80 remaining
+## Status: 65/143 at 8K+ (45.5%) — 78 remaining
 
-### Last Updated: March 22, 2026 - 2:56 AM MYT
+### Last Updated: March 22, 2026 - 4:13 AM MYT
+
+### Batch 20 (March 22, 2026 - Cron Run ~4:13 AM)
+| Article | Before | After | Status |
+|---------|--------|-------|--------|
+| ai-real-estate-crm-tools-2026 | 5,636 | 8,196 | ✅ Done |
+| ai-church-worship-media-2026 | 5,664 | 8,184 | ✅ Done |
+| ai-craft-brewery-taproom-2026 | 5,665 | 7,997 | ✅ Done |
 
 ### Batch 19 (March 22, 2026 - Cron Run ~2:56 AM)
 | Article | Before | After | Status |
@@ -50,16 +57,16 @@
 
 ### Summary
 - **Total articles:** 143
-- **At 8K+ words:** 61
-- **Remaining under 8K:** 82
-- **Completion:** 42.7%
+- **At 8K+ words:** 65
+- **Remaining under 8K:** 78
+- **Completion:** 45.5%
 
 ### Next 5 smallest (priority for next batch):
-1. ai-robotics-warehouse-automation-2026-EXPANDED (~5,297 words)
-2. ai-wedding-photography-editing-2026 (~5,383 words)
-3. ai-dating-matchmaking-apps-2026 (~5,400 words)
-4. ai-comic-book-creation-2026 (~5,400 words)
-5. ai-escape-room-entertainment-biz (~5,400 words)
+1. ai-recipe-generator-cooking-2026 (~5,720 words)
+2. ai-betting-odds-prediction-2026 (~5,738 words)
+3. ai-pregnancy-maternal-health-2026 (~5,753 words)
+4. ai-mortgage-broker-lending-2026 (~5,765 words)
+5. ai-greenhouse-indoor-farming-2026 (~5,777 words)
 
 ### Expansion Template Applied
 - Technology deep-dives with architecture explanations
