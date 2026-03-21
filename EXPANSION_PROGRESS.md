@@ -2,9 +2,16 @@
 
 ## Target: All articles to 8,000+ words (production-ready)
 
-## Status: 65/143 at 8K+ (45.5%) — 78 remaining
+## Status: 35/143 at 8K+ (24.5%) — 108 remaining
 
-### Last Updated: March 22, 2026 - 4:13 AM MYT
+### Last Updated: March 22, 2026 - 6:35 AM MYT
+
+### Batch 21 (March 22, 2026 - Cron Run ~6:35 AM)
+| Article | Before | After | Status |
+|---------|--------|-------|--------|
+| ai-bakery-cafe-management-2026 | 5,577 | 8,109 | ✅ Done |
+| ai-contract-negotiation-legal-ai | 5,633 | 8,025 | ✅ Done |
+| ai-wildlife-conservation-tracking | 5,649 | 8,038 | ✅ Done |
 
 ### Batch 20 (March 22, 2026 - Cron Run ~4:13 AM)
 | Article | Before | After | Status |
@@ -57,16 +64,16 @@
 
 ### Summary
 - **Total articles:** 143
-- **At 8K+ words:** 65
-- **Remaining under 8K:** 78
-- **Completion:** 45.5%
+- **At 8K+ words:** 35
+- **Remaining under 8K:** 108
+- **Completion:** 24.5%
 
 ### Next 5 smallest (priority for next batch):
-1. ai-recipe-generator-cooking-2026 (~5,720 words)
-2. ai-betting-odds-prediction-2026 (~5,738 words)
-3. ai-pregnancy-maternal-health-2026 (~5,753 words)
-4. ai-mortgage-broker-lending-2026 (~5,765 words)
-5. ai-greenhouse-indoor-farming-2026 (~5,777 words)
+1. ai-nightclub-bar-entertainment-2026 (~5,731 words)
+2. ai-dance-studio-performing-arts-2026 (~5,763 words)
+3. ai-real-estate-investor-analysis-2026 (~5,765 words)
+4. ai-cleaning-janitorial-service-2026 (~5,803 words)
+5. ai-space-technology-satellite-2026 (~5,803 words)
 
 ### Expansion Template Applied
 - Technology deep-dives with architecture explanations
