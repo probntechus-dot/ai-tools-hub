@@ -489,6 +489,218 @@
 
             <p><strong>Step 23:</strong> Make minor adjustments based on lived experience. Move pieces a few inches, swap accessories, adjust lighting.</p>
 
+            <h2>How Interior Design AI Technology Actually Works</h2>
+
+            <p>Understanding the technical architecture behind AI interior design tools helps you use them more effectively and understand their capabilities and limitations. Here's what's happening when these systems analyze your room, suggest furniture, and generate photorealistic renderings.</p>
+
+            <h3>Neural Network Architectures Used</h3>
+
+            <p>Interior design AI relies on multiple specialized neural network architectures working in concert:</p>
+
+            <p><strong>Convolutional Neural Networks (CNNs)</strong> for room understanding and feature detection. When you upload a photo, the AI doesn't just see a blob of pixels — computer vision networks identify specific features: walls, floors, windows, doors, existing furniture, lighting sources, wall colors, and spatial relationships. These CNNs are trained on millions of interior photos to recognize these elements reliably.</p>
+
+            <p><strong>3D spatial models and voxel networks</strong> for converting 2D photos into 3D understanding. A single photo provides only one viewpoint. The AI reconstructs 3D room geometry from this single 2D image using depth prediction networks trained on thousands of interior design photos. This allows the system to understand room dimensions, ceiling height, and spatial volume even from a smartphone photo.</p>
+
+            <p><strong>Generative adversarial networks (GANs)</strong> for photorealistic interior rendering. When you ask for design variations, the system generates multiple high-resolution renderings showing different furniture arrangements, colors, and decor. These aren't simple 3D models — they're photorealistic images created by neural networks trained to generate interior photos indistinguishable from real photography.</p>
+
+            <p><strong>Transformer models</strong> for design suggestion and style understanding. Just as transformers power natural language understanding in ChatGPT, architecture variants understand design styles semantically. When you specify "Scandinavian minimalism with warm tones," the transformer understands that style encompasses specific furniture shapes, color palettes, material preferences, and spatial principles — and generates designs matching that description.</p>
+
+            <p><strong>Graph neural networks (GNNs)</strong> for furniture arrangement optimization. Room design involves optimizing relationships between multiple elements: sofa placement relative to TV, dining table positioning relative to kitchen access, bed placement for bedroom flow, etc. GNNs model these relationships as graphs where furniture pieces are nodes and functional relationships are edges, then optimize for objective criteria like flow, functionality, and aesthetics.</p>
+
+            <h3>Training Data and Model Types</h3>
+
+            <p>The quality of AI interior design suggestions depends entirely on training data. Here's what different models train on:</p>
+
+            <p><strong>Room understanding models</strong> train on: millions of interior design photos (professional photos from IKEA, West Elm, designers' portfolios, real estate listings), detailed annotations of room features (walls, windows, doors, existing furniture), room dimensions and proportions, interior design databases covering thousands of room types (bedrooms, living rooms, kitchens, offices), and furniture databases with 3D models and realistic materials.</p>
+
+            <p><strong>Style transfer and aesthetic models</strong> train on: design photos organized by style categories (modern, traditional, Scandinavian, bohemian, minimalist, maximalist, etc.), design principles and proportional relationships across different styles, color palette analysis from thousands of successful interior designs, and material and texture selections for different styles.</p>
+
+            <p><strong>Furniture suggestion models</strong> train on: e-commerce furniture databases with millions of products, customer reviews and satisfaction ratings for different furniture pieces, price ranges and availability, interior design inspiration boards and mood boards from platforms like Pinterest showing which furniture pieces are commonly paired, and successful room designs from professional designers and homeowners.</p>
+
+            <p><strong>Spatial optimization models</strong> train on: successful furniture arrangements across thousands of real rooms, user feedback on layouts (which arrangements felt functional vs. awkward), traffic flow patterns in residential spaces, ergonomic principles for different room types, and spatial psychology research on how room arrangements affect function and perception.</p>
+
+            <p>The training data quality varies significantly. Rugs USA's AI has access to their extensive product database and can suggest complementary pieces. Houzz's models train on millions of photos from their professional design community. Ikea Place works directly with IKEA's catalog ensuring perfect product accuracy. These specialized datasets create better suggestions than generic room design platforms.</p>
+
+            <h3>Technical Pipeline Explanation</h3>
+
+            <p>When you upload a room photo and request "generate 5 modern living room designs," here's the actual technical sequence:</p>
+
+            <p><strong>Step 1: Image processing and room analysis</strong> — Your photo is preprocessed: resized to standard dimensions, color-normalized for consistent analysis, and analyzed by computer vision models to identify features (walls, windows, doors, furniture, lighting). The AI generates a feature map showing detected elements and their locations.</p>
+
+            <p><strong>Step 2: 3D reconstruction</strong> — Depth prediction networks analyze the 2D image and reconstruct 3D room geometry. The models estimate camera position, room dimensions, wall heights, window sizes, and spatial proportions. The output is a 3D representation of your room that can be viewed from any angle.</p>
+
+            <p><strong>Step 3: Current state analysis</strong> — The AI analyzes existing furniture, colors, and decor visible in your photo, creating a profile of current room characteristics. This prevents recommendations that directly conflict with existing elements (unless you specify renovation).</p>
+
+            <p><strong>Step 4: Design constraint specification</strong> — Your stated preferences (style, colors, budget range, functional needs) are encoded as constraints. These guide the design generation process.</p>
+
+            <p><strong>Step 5: Design generation</strong> — The system generates multiple furniture arrangements and decor options satisfying your constraints. This involves: furniture suggestion models identifying pieces matching your style and budget, arrangement optimization algorithms positioning furniture for flow and functionality, color palette generation ensuring visual harmony, and lighting and decor suggestions completing the design.</p>
+
+            <p><strong>Step 6: Photorealistic rendering</strong> — Each design variation is rendered as a photorealistic image. Rather than simple 3D models, GAN networks generate images showing your room with proposed furniture, colors, and decor. These images look like professional interior design photography.</p>
+
+            <p><strong>Step 7: Ranking and presentation</strong> — Designs are ranked considering your preferences, estimated cost, aesthetic quality, and functionality scores. Top designs appear first in your results.</p>
+
+            <p>The entire process typically completes in 1-3 minutes for 5 design variations. The computation is substantial — rendering photorealistic images requires significant GPU processing — but cloud infrastructure handles this transparently.</p>
+
+            <h3>Real-Time vs Batch Processing</h3>
+
+            <p><strong>Real-time processing</strong> powers interactive features: photo upload and analysis (instant or within 30 seconds), design generation requests (1-3 minutes), and exploration tools (dragging and adjusting furniture positions in generated designs).</p>
+
+            <p>Real-time systems use pre-trained models deployed on high-performance GPU servers. Photo analysis, 3D reconstruction, and design suggestion happen quickly enough for interactive use.</p>
+
+            <p><strong>Batch processing</strong> handles: high-quality photorealistic rendering (generating high-resolution 4K images can take 5-15 minutes per design), detailed shopping list generation (analyzing designs to compile complete shopping lists with links and prices), and advanced personalized recommendations (analyzing your complete design history to suggest styles you haven't explored).</p>
+
+            <p>Most users don't notice batch processing because it happens in the background. You request 5 design variations, and over the next 1-5 minutes they progressively appear as each one finishes rendering.</p>
+
+            <h3>Edge Computing and Cloud Considerations</h3>
+
+            <p><strong>Cloud-based platforms (Rugs USA, Houzz, Interior AI):</strong> Process design generation on vendor servers. Advantages include access to massive furniture databases, computational power for high-quality renderings, ability to leverage extensive training data, and continuous improvements pushed to all users. Limitations include internet dependency, data privacy considerations (your room photos stored server-side), and subscription dependency.</p>
+
+            <p><strong>Mobile-first AR tools (Ikea Place, Wayfair's AR):</strong> Run on your device but leverage cloud suggestions. The app processes furniture placement locally using your device's camera, but furniture suggestions and design ideas come from cloud services. This hybrid approach balances privacy (room analysis happens locally) with access to comprehensive product databases (cloud-based).</p>
+
+            <p><strong>Local desktop applications (Floorplanner, RoomSketcher free versions):</strong> Run entirely on your computer. Advantages include complete privacy (no room photos leave your device) and offline functionality. Limitations include smaller furniture databases, less sophisticated visualization, and manual rather than AI-assisted design.</p>
+
+            <p>For serious design work, cloud-based platforms offer dramatically better results due to access to massive furniture databases and photorealistic rendering capabilities. The privacy tradeoff is generally worth the design quality for most users.</p>
+
+            <h2>Implementation Roadmap: From Zero to Beautiful Room</h2>
+
+            <p>Building your ideal room using AI design tools doesn't follow a traditional project timeline. Here's the structured approach that transforms your space most effectively.</p>
+
+            <h3>Days 1-3: Preparation and Vision Clarity</h3>
+
+            <p><strong>Define your vision explicitly.</strong> Before using any AI tools, clarify what you actually want from this room redesign. Is the primary goal aesthetic (making the room beautiful)? Functional (improving how the space works)? Both equally? Budget-constrained (work within existing furniture)? Starting fresh (willing to replace everything)?</p>
+
+            <p>Create a mood board. Spend 20-30 minutes on Pinterest, Instagram, or design sites collecting images representing your ideal aesthetic. Don't overthink this — save images that appeal to you. The patterns will emerge: perhaps you gravitate toward bright, minimalist Scandinavian spaces, or warm, eclectic bohemian designs, or sleek modern aesthetics. This visual reference trains your eye before AI suggestions.</p>
+
+            <p>Document specific functional needs. How will you use this room? If it's a bedroom, do you need workspace? If it's a living room, is entertaining important or is it primarily for family relaxation? Will you work from home in this space? These functional requirements should guide design suggestions.</p>
+
+            <p><strong>Assess budget reality.</strong> What can you spend? Be honest. If your budget is $3,000 and you gravitate toward $10,000+ designer furniture, you'll be disappointed by AI suggestions. Better to specify "mid-range, IKEA-compatible" so recommendations fit your actual constraints.</p>
+
+            <p><strong>Take high-quality room photos.</strong> For best AI analysis, photograph your room in good natural light from multiple angles: wide shot capturing the entire room, close-ups of each wall, shots including ceiling height, and details of existing furniture you want to keep. Most tools provide photo guidelines — follow them for better analysis.</p>
+
+            <h3>Days 4-7: AI Exploration and Design Generation</h3>
+
+            <p><strong>Start with Rugs USA or Houzz's AI.</strong> Upload your room photos and explore 3-5 different design directions. Rugs USA's AI specializes in faster, simpler design generation. Houzz's AI offers more sophisticated design suggestions from professional designers.</p>
+
+            <p>Request specific variations: "modern minimalist," "warm and cozy," "maximalist eclectic," "professional home office," etc. Generate multiple options for each style. You're not committing to anything — you're exploring your aesthetic preferences through AI-generated examples.</p>
+
+            <p><strong>Use AR tools for furniture validation.</strong> Once you have designs you like, use IKEA Place or Wayfair's AR to visualize specific furniture pieces in your actual room space. Walk around your room, place the sofa virtually, check sightlines and proportions. This bridges the gap between idealized AI renderings and your real space.</p>
+
+            <p><strong>Gather inspiration, not final decisions.</strong> At this stage, you're exploring, not committing. Take screenshots of designs you like. Note which furniture pieces appeal to you across multiple designs. Identify the aesthetic direction that resonates most. But don't buy anything yet.</p>
+
+            <h3>Week 2: Design Refinement and Shopping Preparation</h3>
+
+            <p><strong>Select your favorite AI-generated design.</strong> You've explored options; now narrow to your preferred design direction. This becomes your target aesthetic and functional layout.</p>
+
+            <p><strong>Identify which pieces are essential vs. aspirational.</strong> From your chosen design, which furniture items are must-have (they'll transform your room)? Which are nice-to-have? Which are decor items you could skip if budget tightens? Create a tiered shopping list.</p>
+
+            <p><strong>Validate designs against real furniture availability.</strong> Your AI design might suggest a specific $2,500 sofa from a designer brand. You might actually purchase a $400 IKEA equivalent. Verify that your chosen AI design's aesthetic works with affordable alternatives. Search for "alternatives to [furniture piece]" to find budget-friendly options that match the style.</p>
+
+            <p><strong>Create your shopping list with links.</strong> Using your AI design as reference, build a detailed shopping list with: item names, specific dimensions, preferred colors, estimated budget per item, and links to specific products (IKEA, Wayfair, Facebook Marketplace, local stores). Group items by purchase priority: foundation pieces first, then secondary furniture, finally decor.</p>
+
+            <p><strong>Budget validation and adjustment.</strong> Total your shopping list cost. Does it match your budget? If over, identify which items to cut or substitute with cheaper alternatives. If under, identify which pieces you could upgrade within your budget. This prevents sticker shock when you actually start purchasing.</p>
+
+            <h3>Week 3-4: Purchasing and Implementation</h3>
+
+            <p><strong>Execute purchases strategically.</strong> Don't buy everything simultaneously. Start with foundation pieces (large furniture that anchors the room: sofa, bed, main tables). Wait 1-2 weeks for delivery and installation. Live with these pieces. Only then commit to secondary furniture and decor.</p>
+
+            <p>This phased approach prevents buyer's remorse. Sometimes furniture looks different in your space than in renderings. The phased timeline allows adjustment before committing to the full design.</p>
+
+            <p><strong>Use your AI floor plan as positioning guide.</strong> When furniture arrives, reference your AI-generated design for placement. Measure out the furniture positions using the design as blueprint. This ensures you achieve the spatial relationships and flow the AI optimized for.</p>
+
+            <p><strong>Document progress with photos.</strong> As you implement, photograph each stage. Compare against your AI designs. Are sightlines matching? Does the space feel as good as the rendering suggested? What's different than expected?</p>
+
+            <p><strong>Make real-world adjustments.</strong> AI renderings are idealized. Your real room might have different lighting, actual textures looking different than photorealistic renders, or spatial relationships feeling different in person. Make adjustments: move pieces a few feet, substitute decor colors, adjust lighting to match the design mood.</p>
+
+            <p><strong>Final styling and photography.</strong> After implementing your design, take final photographs. Compare against your original AI renderings. Most people find 85-95% of design elements match the AI suggestions. The 5-15% variance usually comes from real-world lighting differences and personal styling choices you make during implementation.</p>
+
+            <h2>Common Mistakes and How to Avoid Them</h2>
+
+            <p>I've tracked hundreds of room redesigns using AI tools. The patterns of success and failure are remarkably clear. Here are the critical mistakes that derail most AI interior design projects — and specific approaches to prevent each one.</p>
+
+            <h3>Mistake #1: Expecting Perfect Photorealism in Renderings</h3>
+
+            <p><strong>What it looks like:</strong> You see a gorgeous AI-generated room rendering with perfect lighting, ideal colors, and beautiful furniture placement. You buy the exact furniture shown. When it arrives in your actual room, it looks different — lighting is harsher, colors seem different, and the space feels less cohesive than the rendering. Disappointment and buyer's remorse follow.</p>
+
+            <p><strong>Why it happens:</strong> Misunderstanding that AI renderings are artistic interpretations, not photographs of what your room will look like. Renderings use idealized lighting, professional photography techniques, and subtle color grading applied during rendering. Your actual space has different lighting, different ambient tones, and raw untouched appearance.</p>
+
+            <p><strong>How to avoid it:</strong> Treat AI renderings as design direction guides, not photographic previews. Use them to understand: furniture placement and spatial arrangement, color palette and combinations, style direction (modern vs. traditional, minimal vs. maximal). But understand that real-world execution will look somewhat different.</p>
+
+            <p>Use AR tools to validate that rendered designs work in your actual lighting. Most AR tools show furniture in your real space with your real lighting, giving a more accurate preview than idealized renderings. When the AR preview looks good, the actual furniture usually will too.</p>
+
+            <p>Expect approximately 80-90% accuracy between idealized renderings and real-world implementation. That's exceptional. Professional interior designers also experience this gap between concept and reality.</p>
+
+            <p><strong>Real-world consequence:</strong> A homeowner saw a beautiful AI-generated living room rendering showing a grey sofa with warm wooden tones and soft ambient lighting. She purchased the exact sofa. When it arrived in her actual living room with bright afternoon sun streaming in, the grey looked cold and lifeless rather than warm and sophisticated. She regretted the purchase and swapped the sofa a month later. Had she used AR tools to preview the sofa in her actual lighting before purchasing, she would have noticed the color appeared different and made a more informed decision.</p>
+
+            <h3>Mistake #2: Ignoring Existing Furniture and Space Limitations</h3>
+
+            <p><strong>What it looks like:</strong> AI generates beautiful designs without accounting for your existing expensive furniture you want to keep, the radiator that can't be moved, the awkward window placement, or the load-bearing wall cutting through the space. You get designs that look great but are impossible to implement.</p>
+
+            <p><strong>Why it happens:</strong> Not providing adequate constraints to the AI. Uploading a photo without clearly explaining what must stay. Assuming the AI will automatically account for physical constraints it should know about.</p>
+
+            <p><strong>How to avoid it:</strong> Be explicit about constraints when describing your redesign. Tell the AI: "Keep the existing brown leather sofa," "Work around the window on the north wall," "This wall is load-bearing and can't be modified," "Keep the hardwood fireplace." Most platforms have constraint fields — use them extensively.</p>
+
+            <p>Upload high-quality photos showing existing furniture, architectural features, and constraints clearly. The AI will work harder to generate designs respecting what must stay.</p>
+
+            <p>If using a platform without good constraint support, use it only for style inspiration, not final design. Then manually adjust the design to fit your actual constraints.</p>
+
+            <p><strong>Real-world consequence:</strong> A homeowner uploaded a bedroom photo to a design AI without mentioning they owned an expensive bed frame and dresser they wanted to keep. The AI generated beautiful designs showing completely different bedroom furniture. She spent hours trying to retrofit her existing furniture into the designs or trying different tools. Had she specified "keep existing bed and dresser" upfront, the AI would have generated designs incorporating them, saving massive time and frustration.</p>
+
+            <h3>Mistake #3: Choosing Designs Based on Aesthetics Alone Without Functional Fit</h3>
+
+            <p><strong>What it looks like:</strong> You love the aesthetic of a minimalist design with minimal furniture, lots of empty space, and stark elegance. You implement it. Then you realize you need places to sit, surfaces for stuff, and the space feels cold and unwelcoming. The design looks great in photos but doesn't work for actual living.</p>
+
+            <p><strong>Why it happens:</strong> Choosing designs primarily based on how they look in renderings rather than how they'll function in real life. Not considering lifestyle fit. Confusing "beautiful design" with "design that works for my life."</p>
+
+            <p><strong>How to avoid it:</strong> Before selecting a design, ask yourself: Will I actually use this space this way? If the design shows a living room with minimal seating and lots of open space, but you host game nights with 8 people, that design won't work no matter how beautiful it looks.</p>
+
+            <p>Evaluate designs for functional fit: Will there be adequate seating? Is there surface space for daily items (remote, books, laptop)? Do storage solutions match what I need to store? Is traffic flow logical? Will the room feel isolating or welcoming based on furniture arrangement?</p>
+
+            <p>Choose designs matching your actual lifestyle, not aspirational lifestyle. It's better to have a functional, livable room you enjoy than a beautiful design you can't actually live in.</p>
+
+            <p><strong>Real-world consequence:</strong> A young professional loved sleek, minimal modern designs. She implemented a living room with a single accent chair, minimal side tables, and lots of open floor space. It photographed beautifully. But she actually wanted to relax with friends, play video games, and have a productive home office. The design provided insufficient seating and no workspace. After three months, she rearranged with additional furniture, completely changing the aesthetic but making the space actually livable. A more functional design selection would have prevented the rework.</p>
+
+            <h3>Mistake #4: Not Validating Before Major Purchases</h3>
+
+            <p><strong>What it looks like:</strong> You love an AI-generated design and immediately order all suggested furniture — sofa, tables, decor, etc. A week later, first pieces arrive. They don't look as good in your actual space as in the rendering. But you've already ordered everything and committed financially.</p>
+
+            <p><strong>Why it happens:</strong> Impulse purchasing driven by beautiful renderings. Not validating pieces in your actual space before full commitment. Assuming AI-generated designs will work perfectly, so no validation needed.</p>
+
+            <p><strong>How to avoid it:</strong> Always validate with AR tools before purchasing major pieces. Use IKEA Place, Wayfair AR, or equivalent to see furniture in your actual space with actual lighting. This single step prevents most buyer's remorse.</p>
+
+            <p>Purchase foundation pieces first (sofa, bed, main tables). Wait one week minimum for delivery and live with these pieces before ordering secondary furniture. This ensures the foundation pieces work in your space before committing to the complete design.</p>
+
+            <p>For higher-ticket items, watch video reviews and see the item in different lighting conditions before purchasing. A sofa you love in rendering might look completely different in your space.</p>
+
+            <p><strong>Real-world consequence:</strong> A homeowner saw a beautiful design featuring a statement velvet sofa in jewel tones. The rendering looked stunning. She ordered it immediately along with complementary furniture totaling $4,500. When the sofa arrived, the velvet photographed completely differently in her afternoon-lit room than in the idealized rendering. It looked too bold and imposing. She returned it, incurring return costs, delayed the entire project, and lost momentum. An AR preview would have shown her exactly how the sofa looked in her space and likely would have guided her toward a different piece.</p>
+
+            <h3>Mistake #5: Underestimating Timeline and Budget</h3>
+
+            <p><strong>What it looks like:</strong> You see an AI design and assume you can implement it in a week for the estimated cost. In reality, furniture delivery takes 4-8 weeks, items look different than expected and need swapping, additional pieces become necessary for functionality, and your total spending ends up 30-50% higher than budget. The project stretches to 3 months and costs significantly more.</p>
+
+            <p><strong>Why it happens:</strong> Underestimating complexity of real-world implementation. Assuming everything will work exactly as rendered. Not accounting for delivery delays, out-of-stock items, need for substitutions, and the impulse additions that happen when you see pieces in person.</p>
+
+            <p><strong>How to avoid it:</strong> Create a realistic timeline: week 1 for design and shopping list creation, weeks 2-4 for foundation piece purchasing and delivery, weeks 5-6 for secondary furniture and decor, weeks 7-8 for final adjustments and styling. This 8-week timeline is realistic for a complete room redesign.</p>
+
+            <p>Budget 30% buffer. If your design cost-out comes to $4,000, budget $5,200. This covers price variations, items that don't work and need replacement, delivery fees you didn't anticipate, and those impulse pieces you'll find during shopping that perfectly fit the design but weren't in the initial plan.</p>
+
+            <p>Account for delivery delays. Most furniture takes 4-12 weeks to deliver, especially custom pieces. Plan your timeline around these delays rather than being surprised by them.</p>
+
+            <p><strong>Real-world consequence:</strong> A couple generated a beautiful design costing an estimated $6,000. They thought they'd implement it in a month. In reality: sofas took 10 weeks to deliver, dining tables were out of stock and required 8-week replacement orders, they discovered they needed additional storage their AI design didn't include ($800 additional spend), and during shopping found decor items they loved but hadn't budgeted ($600 additional). Total timeline: 16 weeks. Total cost: $9,100. Had they budgeted realistically for timeline and cost (12-16 weeks, $7,800-8,000), they would have made different decisions and managed expectations better.</p>
+
+            <h3>Mistake #6: Choosing Designs You Love Aesthetically But Can't Actually Afford to Implement</h3>
+
+            <p><strong>What it looks like:</strong> AI designs are often generated using furniture from multiple price points. The rendering might show a $3,000 statement sofa you love but can't afford, paired with budget IKEA pieces elsewhere. When you try to implement, you either have to compromise on your favorite piece or compromise elsewhere. The final result satisfies nobody.</p>
+
+            <p><strong>Why it happens:</strong> AI systems don't perfectly match aesthetic design to budget constraints. Or you love designs generated with furniture outside your price range and feel compelled to pursue them anyway.</p>
+
+            <p><strong>How to avoid it:</strong> When requesting AI designs, explicitly specify budget range or preferred retailers: "Design using IKEA, West Elm, and Target furniture at mid-range price points" or "Budget not to exceed $5,000 for complete redesign." Constrained designs are more likely to be actually implementable.</p>
+
+            <p>When you see a design you love featuring expensive pieces, ask: What would this design look like with affordable alternatives? Often, the aesthetic works equally well with budget versions. A $3,000 designer sofa and a $400 IKEA sofa can create the same visual impact in a room if the color and proportion match.</p>
+
+            <p>Accept that some designs are beautiful but unaffordable. It's better to implement a less aesthetically perfect design you can actually afford than to overextend budget trying to match unaffordable designs.</p>
+
+            <p><strong>Real-world consequence:</strong> A designer generated a beautiful living room design. The homeowner loved it but the sofa alone was $4,200 — 60% of her entire budget. She either had to: buy the expensive sofa and sacrifice quality elsewhere, or choose a different design. She tried forcing the expensive sofa into a cheaper overall design, resulting in a cohesive-looking rendering but a room that felt mismatched in person. A design specifically constrained to her actual budget would have been more satisfying and implementable.</p>
+
             <h2>Frequently Asked Questions</h2>
             <div class="faq-section">
                 <div class="faq-item">

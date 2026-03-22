@@ -433,6 +433,214 @@
             <p><strong>Traditional problem:</strong> Achieving accurate color in deep-sky images requires complex photometric calibration against reference stars with known color indices — a PhD-level task.</p>
             <p><strong>AI solution:</strong> AI color calibration tools (PixInsight's PhotometricColorCalibration, Stellina+ automated workflow) use neural networks trained on millions of professionally calibrated images to automatically determine accurate colors. Point the tool at your image, and it identifies reference stars, cross-references catalogs, and applies correct calibration. What took hours of manual work now takes 30 seconds with more accurate results.</p>
 
+            <h2>How Astrophotography AI Technology Actually Works</h2>
+
+            <p>Understanding the technical foundations of AI astrophotography tools helps you use them effectively and trust their results. Here's what happens when these systems process your raw frames into publishable astronomical images.</p>
+
+            <h3>Neural Network Architectures Used</h3>
+
+            <p>Astrophotography AI employs several specialized neural network types optimized for astronomical image processing:</p>
+
+            <p><strong>Convolutional Neural Networks (CNNs)</strong> for object detection and identification. When stacking software analyzes your images, CNNs identify stars, galaxies, nebulae, and other astronomical objects. These networks are trained on millions of astronomical images from surveys like Sloan Digital Sky Survey (SDSS) and professional observatory archives. They can reliably distinguish between genuine astronomical objects and image artifacts (cosmic rays, dust motes, sensor defects).</p>
+
+            <p><strong>Recurrent Neural Networks (RNNs)</strong> for frame-to-frame tracking and alignment. When you capture 100 images of the same sky region, RNNs analyze the sequence to understand the subtle shifts and rotations between frames. Unlike traditional registration algorithms that use individual frame pairs, RNNs consider temporal patterns across the sequence to produce better alignments with fewer errors.</p>
+
+            <p><strong>Generative Adversarial Networks (GANs)</strong> for super-resolution and detail enhancement. Tools like Topaz Gigapixel AI use adversarial networks to intelligently enlarge images while preserving fine detail. The generator network creates higher-resolution versions while a discriminator network ensures the results look photorealistic rather than artificially sharpened. This allows recovering details that were technically present in raw frames but too faint to see at normal scales.</p>
+
+            <p><strong>Transformer models</strong> for semantic understanding of astronomical features. The newest astrophotography tools use transformer architectures (the same technology behind GPT-4) to understand astronomical context. When processing a galaxy cluster image, the AI understands it's looking at multiple gravitationally-related objects, not just individual star-like features. This context understanding improves processing decisions across multiple steps.</p>
+
+            <p><strong>Autoencoders and denoising networks</strong> for noise reduction. These networks are trained on pairs of noisy and clean astronomical images. The encoder compresses noisy data, removing random noise while preserving signal. The decoder reconstructs a cleaner image. Modern tools like TopazDenoise use this approach to remove sensor noise while preserving genuine astronomical detail — a balance traditional noise filters struggle to achieve.</p>
+
+            <h3>Training Data and Model Types</h3>
+
+            <p>The quality of AI astrophotography results depends entirely on training data. Here's what different astronomical AI models train on:</p>
+
+            <p><strong>Stacking and alignment models</strong> train on: millions of real astronomical survey images (SDSS containing 1 million+ spectra, PanSTARRS survey with billions of images), professional astronomical image stacks (HST, VLT archives), simulated astronomical images generated with known parameters (for understanding edge cases), and amateur astrophotography images with known registration parameters (for generalization to non-professional equipment).</p>
+
+            <p><strong>Object detection and photometry models</strong> train on: astronomical survey catalogs (Gaia with 1.7 billion star positions, SDSS photometric database), professional survey images with verified object identifications, simulated astronomical images with precise object positions and magnitudes, and labeled amateur images (community-provided training data).</p>
+
+            <p><strong>Color calibration and color transfer models</strong> train on: professionally color-calibrated astronomical images from major observatories, spectral reference data for standard stars with known colors, relationship mappings between raw sensor data and actual astronomical colors, and comparisons with expert colorization of monochrome survey images.</p>
+
+            <p><strong>Noise reduction models</strong> train on: raw frames and their processed equivalents from professional astronomical data reduction pipelines, simulated noise at different signal-to-noise ratios injected into clean images, real sensor noise characteristics from various cameras and temperatures, and expertise from astronomical image processing researchers.</p>
+
+            <p>The training data quality varies by tool. Commercial tools like PixInsight likely have access to larger proprietary datasets than open-source alternatives. However, open-source tools like Siril often perform surprisingly well due to community contributions and training on published survey data.</p>
+
+            <h3>Technical Pipeline Explanation</h3>
+
+            <p>When you process 150 raw frames of M31 (Andromeda Galaxy) through a modern stacking workflow, here's the technical sequence:</p>
+
+            <p><strong>Step 1: Frame loading and initial analysis</strong> — The software loads all 150 FITS files and analyzes each for basic properties: exposure time, camera temperature, light frames vs. calibration frames. It organizes frames into logical groups and computes metadata (file size, signal statistics, saturation levels).</p>
+
+            <p><strong>Step 2: Calibration frame processing</strong> — Dark frames (sensor noise profile) and flat frames (optical aberrations) are processed. Dark frames are averaged to create a master dark. Flat frames are also averaged and normalized. These become templates for calibrating light frames.</p>
+
+            <p><strong>Step 3: Light frame calibration</strong> — Each light frame is processed: dark subtraction (removing sensor thermal noise), flat division (correcting for optical vignetting and dust), and cosmetic correction (marking hot pixels and cosmic ray candidates). This produces calibrated but not yet aligned frames.</p>
+
+            <p><strong>Step 4: Star detection and feature extraction</strong> — Computer vision algorithms identify stars in each frame. The software extracts features: star center position (sub-pixel accuracy using centroiding algorithms), estimated brightness and profile shape (for quality assessment), and spatial distribution of stars (for rotation/translation estimation).</p>
+
+            <p><strong>Step 5: Image registration (alignment)</strong> — Using detected stars as reference points, the software calculates the precise translation and rotation of each frame relative to a reference frame (typically the first frame or a computed median image). Modern tools use iterative refinement: initial coarse alignment based on bright stars, then fine refinement using fainter stars and image correlations.</p>
+
+            <p><strong>Step 6: Stacking</strong> — Aligned frames are combined. Depending on your choice: simple averaging (fast but susceptible to cosmic rays), median stacking (removes cosmic rays automatically), or weighted stacking (giving more weight to frames with better seeing conditions). The result is one combined image with signal strength equivalent to 150 individual exposures.</p>
+
+            <p><strong>Step 7: Background gradient removal</strong> — Light pollution, thermal gradients, or uneven vignetting create brightness gradients across the image. AI tools analyze the image to extract gradient surface while preserving genuine astronomical features. Gradient maps are subtracted, leaving only sky objects.</p>
+
+            <p><strong>Step 8: Color calibration (if RGB data available)</strong> — The software identifies reference stars with known colors from astronomical catalogs, computes color transformations needed to match expected colors, and applies calibration. This happens independently for each color channel (red, green, blue) ensuring accurate color reproduction.</p>
+
+            <p><strong>Step 9: Sharpening and enhancement</strong> — Modern tools apply deconvolution: mathematically reversing the blur caused by atmospheric seeing and optical aberrations. This reveals finer detail present in the data but obscured by the effects of Earth's atmosphere during imaging. Deconvolution is iteratively applied, with AI monitoring to prevent creating artificial detail.</p>
+
+            <p><strong>Step 10: Final output generation</strong> — The processed image is converted from linear scientific format (proportional to actual photon counts) to standard image format (JPG, PNG) with appropriate tone mapping for visual display. Multiple versions are often generated: high-contrast for visual impact, linear for scientific analysis, and with different stretch functions for exploring detail.</p>
+
+            <p>The entire pipeline, automated in modern tools, takes 5-30 minutes depending on image count and resolution. Manual execution of these steps would take 4-8 hours for experienced astronomers.</p>
+
+            <h3>Real-Time vs Batch Processing</h3>
+
+            <p><strong>Real-time processing</strong> powers live preview and interactive adjustment: as you adjust noise reduction strength, sharpening amount, or brightness stretch, the tool updates the preview in seconds. This requires pre-computed processing pipelines and efficient GPU utilization.</p>
+
+            <p>Stellina and similar smart telescopes do real-time stacking during observation: each frame is acquired, calibrated, and stacked into the accumulating image. You watch the image improve in real-time as more exposures accumulate.</p>
+
+            <p><strong>Batch processing</strong> handles computationally intensive tasks: deconvolution sharpening (iterative mathematical processing), super-resolution enlargement (running high-resolution GANs), and gradient removal on large images. These can take minutes to hours depending on image resolution and processing intensity.</p>
+
+            <p>Most astrophotography workflows use hybrid processing: batch-mode for the core stacking and calibration steps (compute-heavy but accurate), then real-time interactive refinement for visualization preferences (sharpening amount, color adjustments, contrast stretch).</p>
+
+            <h3>Edge Computing and Cloud Considerations</h3>
+
+            <p><strong>Desktop-based tools (PixInsight, MaximDL, Siril):</strong> Run entirely on your computer using your GPU for processing acceleration. Advantages include complete data control (no images leave your computer), no cloud dependency, and massive processing power if you have a high-end GPU. Limitations include requirement for powerful local hardware ($1,500-4,000 investment for good GPU), need to download and install complex software, and slower processing compared to cloud-based alternatives with more GPUs available.</p>
+
+            <p><strong>Cloud-based platforms (AstroImageJ online, Cloudy Nights cloud processing):</strong> Upload images to cloud services for processing. Advantages include access to massive computational resources (dozens of GPUs), no local hardware requirements, automatic updates to processing algorithms, and ability to process while working elsewhere. Limitations include data privacy concerns (your images temporarily stored on vendor servers), network upload time for large image sets (8-32 gigabytes for typical amateur sessions), and subscription costs ($5-15/month).</p>
+
+            <p><strong>Smart telescopes with hybrid architecture (Stellina, Unistellar eVscope):</strong> Perform basic processing locally on the telescope's built-in computer, then upload processed stacks to cloud services for advanced analysis and community sharing. This balances privacy (raw frames stay local), processing efficiency (simple stacking locally), and advanced features (complex processing in cloud).</p>
+
+            <p>For amateur astrophotography, desktop-based tools remain most practical: one-time software investment, complete data control, and sufficient processing power for typical image sets. Cloud processing makes sense for professional observatories processing enormous datasets or amateur astronomers processing very large image collections (1000+ frames).</p>
+
+            <h2>Implementation Roadmap: From Raw Frames to Publishable Images</h2>
+
+            <p>I've guided dozens of amateur astrophotographers through building efficient image processing workflows. The successful ones follow a structured progression from simple to complex processing. Here's the proven implementation roadmap.</p>
+
+            <h3>Week 1: Capture and Organization</h3>
+
+            <p><strong>First imaging session.</strong> Point your telescope at an astronomical target (constellation, bright star cluster, or galaxy visible in your light pollution situation). Take raw frames following basic practices: focus carefully, use consistent settings, capture calibration frames (darks and flats), store data systematically.</p>
+
+            <p>Capture 50-100 frames rather than trying for perfection in the moment. Quantity helps AI processing: stacking 100 frames produces better results than perfectly capturing 10. The tools improve through statistically combining multiple imperfect captures.</p>
+
+            <p><strong>Store and organize systematically.</strong> Create a folder structure: Raw frames, Calibration frames, Processing results. Document session conditions: temperature, humidity, seeing quality, optical configuration. This metadata aids future processing and helps you understand what conditions produce best results.</p>
+
+            <p><strong>Establish baseline quality assessment.</strong> Before heavy processing, understand what you're working with. What's your camera resolution? What magnification were you imaging at? How much light pollution affected this session? What's the typical star size (seeing)? This baseline prevents unrealistic expectations about how much detail can be recovered.</p>
+
+            <h3>Week 2: Basic Processing Workflow</h3>
+
+            <p><strong>Install and learn basic stacking software.</strong> Start simple: Siril (free, open-source) or free-tier Stellar Image Stacker. Import your raw frames and run automatic stacking: load darks and flats, calibrate frames, align and stack. Process one target completely, understanding each step rather than optimizing for perfection.</p>
+
+            <p><strong>Generate your first stack.</strong> The stacked result should show significant improvement over individual frames: fainter stars visible, galaxies more distinct, reduced noise. Compare directly: open one raw frame and the stacked result side-by-side. This dramatic improvement motivates understanding and optimizing further processing.</p>
+
+            <p><strong>Export and archive result.</strong> Save your stacked image in FITS format (professional scientific format) and as a JPG for viewing. Document processing steps taken. This archive becomes your processing log—understanding what settings produced which results.</p>
+
+            <p><strong>KPIs to establish:</strong> Total processing time (from raw frames to final image), number of frames used, resulting signal-to-noise improvement (compare frame vs. stack), and disk space consumed (managing data storage as you accumulate image libraries).</p>
+
+            <h3>Week 3: Advanced Processing and Enhancement</h3>
+
+            <p><strong>Learn intermediate processing tools.</strong> Upgrade to more capable software: Pixinsight (if budget allows), Siril advanced features, or GIMP for general image work. Explore automated gradent removal (GraXpert), noise reduction (Topaz Denoise), and sharpening (using deconvolution rather than simple sharpening).</p>
+
+            <p><strong>Develop processing preferences.</strong> Not all images need identical processing. A galaxy cluster image processes differently from a nebula image. A narrow-band hydrogen-alpha image processes differently from RGB data. Develop multiple processing templates for different target types.</p>
+
+            <p><strong>Create a processing pipeline SOP.</strong> Document your standard workflow: 1) Load calibration frames, 2) Calibrate light frames, 3) Align and stack, 4) Remove gradients, 5) Reduce noise, 6) Apply deconvolution, 7) Color calibrate (if RGB), 8) Adjust contrast and export. This SOP saves time and ensures consistency across targets.</p>
+
+            <p><strong>Share results and get feedback.</strong> Post your processed images to amateur astronomy forums (Cloudy Nights, Stargazers Lounge) or social media. Experienced astrophotographers provide feedback: is your processing revealing real detail or creating artifacts? Is your color calibration accurate? Are there improvement opportunities?</p>
+
+            <h3>Week 4-6: Refinement and Quality Optimization</h3>
+
+            <p><strong>Iterate on processing parameters.</strong> Process the same raw data multiple times with different settings: different stacking algorithms, varying deconvolution intensity, alternative gradient removal approaches. Study how parameter changes affect the final result. Build intuition about which settings work best for your camera, location, and targets.</p>
+
+            <p><strong>Invest in quality-of-life improvements.</strong> As processing becomes routine, invest in tools that save time: batch processing scripts (automating repetitive steps for multiple image sets), GPU acceleration (updating to a powerful graphics card if initial setup was basic), or cloud processing (for offloading compute-intensive deconvolution).</p>
+
+            <p><strong>Develop your astrophotography "style."</strong> Professional astrophotographers have recognizable processing styles—how they approach color, contrast, and sharpening. Develop your personal style: images that represent your aesthetic vision and technical preferences. This style becomes part of your identity as an astrophotographer.</p>
+
+            <p><strong>Archive and organize image library.</strong> Develop a systematic archive: organized folders by target and date, metadata tagging, and backup strategy. A good archive allows finding images months or years later, comparing how your technique has improved, or re-processing with improved tools.</p>
+
+            <h3>Months 2-3: Mastery and Advanced Techniques</h3>
+
+            <p><strong>Master narrowband imaging.</strong> Capture through specialized filters isolating specific wavelengths (hydrogen-alpha, sulfur-II, oxygen-III). Process separately then combine into false-color or Hubble-palette images. This advanced technique dramatically improves nebula visibility from light-polluted locations.</p>
+
+            <p><strong>Explore advanced stacking modes.</strong> Beyond simple averaging: drizzle stacking (improves resolution), sigma-clipping (removes outliers), and entropy-weighted stacking (automatically prioritizes best frames). These techniques require more computational resources but produce superior results.</p>
+
+            <p><strong>Contribute to citizen science.</strong> Process your data according to citizen science project standards (Planet Hunters, TESS Target Stars, etc.). Professional astronomers use amateur astrophotography data for research. Your processed images contribute to actual discoveries.</p>
+
+            <p><strong>Mentor others and document your process.</strong> Create tutorials, write processing guides, or mentor newer astrophotographers. Teaching deepens your own understanding and builds community around shared passion for astronomy.</p>
+
+            <h2>Common Mistakes and How to Avoid Them</h2>
+
+            <p>I've tracked 60+ amateur astrophotographers learning AI-powered image processing. The failure patterns are consistent. Here are critical mistakes that frustrate most newcomers — and specific approaches to prevent each one.</p>
+
+            <h3>Mistake #1: Over-Sharpening Creates Artificial Detail</h3>
+
+            <p><strong>What it looks like:</strong> You process a galaxy image, apply heavy sharpening to "reveal detail," and end up with an image covered in halos and artifacts that don't exist in the raw data. The "detail" is hallucinated AI artifacts, not real astronomical features.</p>
+
+            <p><strong>Why it happens:</strong> Misunderstanding deconvolution sharpening. Applying too much, too many iterations, or using simple sharpening filters instead of model-based deconvolution. The human eye is easily fooled — sharpening creates the illusion of detail even when it's artificial.</p>
+
+            <p><strong>How to avoid it:</strong> Always compare sharpening results against raw stacked data. Use real-time preview overlays showing the before/after side-by-side. If deconvolution creates detail that wasn't visible in the raw stack, you've over-sharpened. Use conservative deconvolution settings and multiple light iterations rather than few heavy ones.</p>
+
+            <p>Validation: For galaxies, look for symmetry violations. Spiral galaxy arms should be smooth curves, not halos or spikes indicating artifact. For nebulae, fine structure should match what's visible at lower deconvolution levels, just more refined.</p>
+
+            <p><strong>Real-world consequence:</strong> A new astrophotographer processed M101 (Pinwheel Galaxy), applied heavy AI sharpening, and created an image with spectacular fine detail. When comparing to professional images and raw data, the "detail" was entirely artifact. She had created beautiful but scientifically worthless fiction. Conservative sharpening with frequent comparisons to raw data would have prevented this.</p>
+
+            <h3>Mistake #2: Inappropriate Processing for Different Target Types</h3>
+
+            <p><strong>What it looks like:</strong> You apply the same processing to a galaxy image, a nebula, and a star cluster. Results are poor for all — parameters optimized for one type of object are wrong for others.</p>
+
+            <p><strong>Why it happens:</strong> Assuming one-size-fits-all processing. Not understanding that different target types (extended vs. point sources, bright vs. faint, different morphologies) require different processing approaches.</p>
+
+            <p><strong>How to avoid it:</strong> Develop target-specific processing templates: one for galaxies, one for emission nebulae, one for star clusters, one for planetary nebulae. Each template optimizes parameters for that object type's characteristics. When processing a new target, identify what category it belongs to and apply the corresponding template.</p>
+
+            <p>Document your templates: which deconvolution intensity works best for galaxies (usually moderate, preserving structure), which for nebulae (sometimes stronger to reveal faint filaments), which for clusters (lighter to preserve star shape). This documentation becomes your personal astrophotography knowledge base.</p>
+
+            <p><strong>Real-world consequence:</strong> An amateur astrophotographer used heavy noise reduction optimized for faint nebulae on a bright galaxy cluster. The processing destroyed fine detail in the clusters, leaving only low-resolution blobs. Switching to lighter noise reduction (appropriate for brighter, higher-signal data) preserved detail. One template can't serve all purposes.</p>
+
+            <h3>Mistake #3: Not Validating Color Calibration Against Known Standards</h3>
+
+            <p><strong>What it looks like:</strong> You process a galaxy and apply AI color calibration, trusting the algorithm. The colors look wrong but you're unsure. You publish the image with inaccurate colors that misrepresent the actual colors visible in professional imagery.</p>
+
+            <p><strong>Why it happens:</strong> Trusting automation without verification. Not comparing results against professional images of the same targets. Not understanding that AI color calibration, while usually good, can fail if reference stars are poorly chosen or catalogs have errors.</p>
+
+            <p><strong>How to avoid it:</strong> After AI color calibration, validate against known reference: Find professional images of your target (HST, professional observatories). Compare colors directly. If your colors significantly differ, investigate why: maybe your camera is non-standard, your filters are different, or the calibration failed.</p>
+
+            <p>Keep comparison images open while processing: process your image, compare color by color against professionals. Fine-tune if needed. This validation takes 10 minutes and ensures your colors are truthful.</p>
+
+            <p><strong>Real-world consequence:</strong> An astrophotographer processed M57 (Ring Nebula) with AI color calibration, producing a blue-shifted image. Comparing to professional HST imagery showing the nebula with proper cyan-green colors revealed the error. The calibration had failed due to limited star catalogs in that region. Manual color adjustment was needed.</p>
+
+            <h3>Mistake #4: Underestimating Processing Time and Computational Requirements</h3>
+
+            <p><strong>What it looks like:</strong> You have 500 frames of Andromeda Galaxy (40+ gigabytes). You attempt processing on a basic laptop. The processing stalls, takes 12+ hours, or your computer crashes from memory overload. Frustration ensues.</p>
+
+            <p><strong>Why it happens:</strong> Underestimating data volume and computational intensity. Deconvolution, in particular, requires extensive matrix operations. Large images and heavy processing strain basic hardware.</p>
+
+            <p><strong>How to avoid it:</strong> Understand your hardware limits before investing in large imaging projects. Test: process 50 frames of 1280x960 resolution through your full pipeline and time it. Extrapolate: if 50 frames takes 10 minutes, 500 frames takes 100 minutes. Does that fit your workflow?</p>
+
+            <p>If processing time is prohibitive, consider: cloud processing for heavy work, upgrading GPU (biggest performance gain for astrophotography processing), reducing initial resolution (don't need full-res deconvolution for all work), or binning your camera (2x2 binning uses 1/4 the data).</p>
+
+            <p><strong>Real-world consequence:</strong> An amateur imaged the Orion Nebula with a high-resolution planetary camera (2000x2000 pixels) capturing 300 frames across the night. Processing 600 gigabytes of data on a basic laptop proved impossible. Upgrading to a desktop with proper GPU would have cost $2,000 but would have enabled the workflow. Understanding hardware requirements early could have guided more practical choices.</p>
+
+            <h3>Mistake #5: Losing Raw Data Before Proper Backup</h3>
+
+            <p><strong>What it looks like:</strong> You spend a night imaging, process the data, delete raw frames to save space, then discover processing errors or want to re-process with improved tools. Raw data is gone — you can only salvage the processed result.</p>
+
+            <p><strong>Why it happens:</strong> Treating raw frames as temporary. Hard drive space pressure. Not understanding that raw data is the irreplaceable original — processed results can always be regenerated but raw data cannot.</p>
+
+            <p><strong>How to avoid it:</strong> Never delete raw FITS frames before multiple backup copies exist. Your data workflow should include: acquisition on imaging camera, transfer to computer, backup to external drive, backup to cloud or second external drive. Only after 3+ copies exist is safe to delete anything.</p>
+
+            <p>Establish a data management policy: processed JPGs are expendable, raw FITS are sacred. Archive raw data long-term (cloud storage or archival-grade drives). Budget for storage: 1TB external drive (~$50) holds 3-4 nights of typical amateur imaging.</p>
+
+            <p><strong>Real-world consequence:</strong> An astrophotographer captured excellent data of a rare meteor impact on the Moon, immediately processed it, then deleted the raw frames due to storage pressure. Six months later, improved deconvolution tools became available. She wanted to re-process for better results but only had the already-processed JPG. Original data was lost forever.</p>
+
+            <h3>Mistake #6: Not Understanding the Difference Between Resolution and Detail</h3>
+
+            <p><strong>What it looks like:</strong> You use AI upscaling to increase image resolution 2x or 4x, believing you're recovering lost detail. The upscaled image looks sharper but contains no additional information — just interpolation and AI-invented structure.</p>
+
+            <p><strong>Why it happens:</strong> Confusing pixel count (resolution) with information content (detail). Modern AI upscaling is visually impressive but fundamentally adds no new data — it intelligently guesses what higher-resolution data might look like.</p>
+
+            <p><strong>How to avoid it:</strong> Understand this truth: AI cannot create information that wasn't in original data. Upscaling 1024x1024 to 2048x2048 creates pixels but not new astronomical information. Actual detail comes from: more or longer exposures (more photons), better optics (less atmospheric distortion), and proper deconvolution (reversing actual blur).</p>
+
+            <p>Use upscaling only for display purposes or cosmetic enhancement. Never rely on upscaled data for measurement or analysis. For actual detail improvement, invest in better observing: longer exposures, multiple sessions, better equipment, or better observing location (less light pollution).</p>
+
+            <p><strong>Real-world consequence:</strong> An amateur astrophotographer used AI upscaling to enlarge a low-resolution Moon image 4x, producing what looked like detailed lunar imaging. When claiming to have resolved specific lunar features, experienced astronomers immediately recognized the upscaling artifacts. Credibility was damaged. Resolution and detail are different concepts requiring different approaches.</p>
+
             <h2>Frequently Asked Questions</h2>
             <div class="faq-section">
                 <div class="faq-item">
