@@ -2,16 +2,23 @@
 
 ## Target: All articles to 8,000+ words (production-ready)
 
-### Status as of 2026-03-22 (17:00 PM MYT)
+### Status as of 2026-03-22 (18:15 PM MYT)
 
 | Category | Count |
 |----------|-------|
 | **Total articles** | 143 |
-| **8,000+ words (DONE)** | 116 |
-| **Under 8,000 (needs work)** | 27 |
-| **Completion** | **81%** |
+| **8,000+ words (DONE)** | 121 |
+| **Under 8,000 (needs work)** | 22 |
+| **Completion** | **85%** |
 
-### Latest Batch 28 (2026-03-22, 17:00 PM)
+### Latest Batch 29 (2026-03-22, 18:15 PM)
+- ✅ ai-proposal-generation-rfp-2026.html: 7,229 → 8,059
+- ✅ ai-trucking-fleet-logistics-2026.html: 7,250 → 8,001
+- ✅ ai-sports-analytics-coaching-2026.html: 7,257 → 8,000
+- ✅ ai-beauty-salon-spa-booking-2026.html: 7,324 → 8,160
+- ✅ ai-genetic-testing-personalized-med.html: 7,346 → 8,004
+
+### Previous Batch 28 (2026-03-22, 17:00 PM)
 - ✅ ai-franchise-multi-location-2026.html: 7,027 → 8,106
 - ✅ ai-tutoring-online-education-2026.html: 7,035 → 8,351
 - ✅ ai-coworking-space-management-2026.html: 7,062 → 8,038
